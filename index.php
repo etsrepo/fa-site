@@ -441,4 +441,164 @@
     </div>
 </footer>
 </body>
+<style type="text/css">
+    .toggle-menu.active{
+        width: 0;
+    }
+    .toggle-menu.active:before{
+        transform: rotate(45deg);
+    }
+    .toggle-menu.active:after{
+        transform: rotate(-45deg);
+    }
+    img{
+        max-width: 100%;
+    }
+    section h2{
+        text-align: center;
+        font-size: 32px;
+        font-weight: 300;
+        padding-top: 80px;
+    }
+    .details{
+        color: rgba(51, 51, 51, 0.8);
+        font-weight: 300;
+        font-size: 18px;
+    }
+    #features{
+        background-color: #fdfdfd;
+        height: initial;
+    }
+    .features-details, .download-details{
+        display: flex;
+        padding: 30px 20px;
+        flex-wrap: wrap;
+        align-items: center;
+        flex-direction: column;
+    }
+    .features-details .item, .download-details .item{
+        line-height: 1.6;
+        box-sizing: border-box;
+        margin-bottom: 20px;
+    }
+    .features-details svg{
+        width: 100px;
+        height: 80px;
+        max-width: 100%;
+    }
+    .features-details h3{
+        margin: 15px 0 5px;
+    }
+    .item-description{
+        max-width: 500px;
+        margin: auto;
+    }
+    #download{
+        height: initial;
+    }
+    .item .button{
+        background: #4dd467;
+        border: 1px solid #3cb854;
+        color: #fff;
+        border-radius: 8px;
+        padding: 12px 40px;
+        font-weight: 400;
+        display: block;
+        margin: auto;
+    }
+    .download-details svg{
+        width: 50px;
+        height: 50px;
+    }
+    .download-details .button{
+        max-width: 150px;
+        line-height: 18px;
+        margin-top: 20px;
+    }
+    .download-details .button.current{
+        box-shadow: 0 0 10px rgba(255, 177, 0, 0.38);
+    }
+    .button-details{
+        font-size: 12px;
+        opacity: .8;
+        letter-spacing: 1px;
+    }
+    .download-count {
+        font-weight: 300;
+    }
+    .highlight {
+        display: inline;
+        font-size: 24px;
+        padding-right: 5px;
+    }
+    .releases-link{
+        font-weight: 300;
+        padding-top: 3%;
+        color: #666;
+    }
+    .share{
+        padding-top: 5%;
+    }
+    .share .buttons{
+        text-align: center;
+        padding: 30px 0 20px;
+    }
+    .share .button{
+        background: #3b5998;
+        display: inline-block;
+        width: 50px;
+        height: 50px;
+        border-radius: 25px;
+        padding-top: 12px;
+        box-sizing: border-box;
+        margin: 0 20px;
+    }
+    .button.google{
+        background: #DC4E41;
+    }
+    .button.twitter{
+        background: #55ACEE;
+    }
+    .share svg{
+        width: 24px;
+        height: 24px;
+    }
+    footer{
+        background: #37424b;
+        padding: 40px 0;
+        overflow: auto;
+        color: #cfd8dc;
+        text-align: center;
+    }
+    footer ul{
+        display: flex;
+        float: left;
+        list-style: none;
+    }
+    footer a{
+        display: block;
+        padding: 10px 20px;
+    }
+    .copyright{
+        float: right;
+        padding: 10px 0;
+    }
+    @media (min-width: 768px) {
+        #features, #download{
+            height: 100%;
+        }
+        .features-details, .download-details{
+            padding: 30px 40px;
+            flex-direction: row;
+        }
+        .features-details .item, .download-details .item{
+            width: 33%;
+            padding: 30px;
+            margin-bottom: inherit;
+        }
+        footer{
+            padding: 40px;
+        }
+    }
+</style>
 </html>
