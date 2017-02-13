@@ -1,5 +1,6 @@
 <html>
 <head>
+    <title>Firebase Admin - Firebase Management Tool</title>
     <meta name=viewport content="width=device-width, initial-scale=1">
     <meta property="og:url"         content="https://firebaseadmin.com" />
     <meta property="og:type"        content="website" />
