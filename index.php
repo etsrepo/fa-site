@@ -602,4 +602,105 @@
         }
     }
 </style>
+<script type="text/javascript">
+    function currentYPosition() {
+        if (self.pageYOffset) return self.pageYOffset;
+        if (document.documentElement && document.documentElement.scrollTop)
+            return document.documentElement.scrollTop;
+        if (document.body.scrollTop) return document.body.scrollTop;
+        return 0;
+    }
+
+    function elmYPosition(eID) {
+        var elm = document.getElementById(eID);
+        if(!elm) return;
+        var y = elm.offsetTop;
+        var node = elm;
+        while (node.offsetParent && node.offsetParent != document.body) {
+            node = node.offsetParent;
+            y += node.offsetTop;
+        } return y;
+    }
+
+    function smoothScroll(eID) {
+        url = window.location.href.substring(0, window.location.href.indexOf('#'));
+        var startY = currentYPosition();
+        var stopY = elmYPosition(eID);
+        var distance = stopY > startY ? stopY - startY : startY - stopY;
+        if (distance < 100) {
+            scrollTo(0, stopY); return;
+        }
+        var speed = Math.round(distance / 10);
+        if (speed >= 20) speed = 20;
+        var step = Math.round(distance / 25);
+        var leapY = stopY > startY ? startY + step : startY - step;
+        var timer = 0;
+        if (stopY > startY) {
+            for ( var i=startY; i<stopY; i+=step ) {
+                setTimeout("window.scrollTo(0, "+leapY+")", timer * speed);
+                leapY += step; if (leapY > stopY) leapY = stopY; timer++;
+            }
+            window.location.href = url + '#' + eID;
+            return;
+        }
+        for ( var i=startY; i>stopY; i-=step ) {
+            setTimeout("window.scrollTo(0, "+leapY+")", timer * speed);
+            leapY -= step; if (leapY < stopY) leapY = stopY; timer++;
+        }
+        window.location.href = url + '#' + eID;
+        return false;
+    }
+    function toggle(e){
+        e.classList.toggle('active');
+    }
+    window.onscroll = function() {
+        var header = document.getElementsByTagName('header')[0];
+        if (document.body.scrollTop > 50) {
+            header.classList.add('scroll');
+        } else {
+            header.classList.remove('scroll');
+        }
+    }
+
+    var url = encodeURIComponent(document.URL);
+    var text = encodeURIComponent(document.title);
+
+    function socialShare(site) {
+        var link;
+        switch (site) {
+            case 'facebook':
+                link = '//www.facebook.com/sharer/sharer.php?u=' + url + '&t=' + text;
+                break;
+            case 'google':
+                link = '//plus.google.com/share?url=' + url;
+                break;
+            case 'twitter':
+                link = '//twitter.com/share?text=' + text;
+                break;
+        }
+        window.open(link, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');
+    }
+
+    function updateCounter(){
+        var status = localStorage.getItem('downloaded');
+        if(!status) {
+            var count = document.getElementById('count').innerHTML;
+            count++;
+            document.getElementById('count').innerHTML = count;
+            localStorage.setItem('downloaded', 1);
+        }
+    }
+
+    function downloadFile(elem) {
+        window.open(elem.getAttribute('href'));
+        updateCounter();
+    }
+
+    var os = "Unknown";
+    if (navigator.userAgent.indexOf("Windows") != -1) os="windows";
+    if (navigator.userAgent.indexOf("Mac")!=-1) os="mac";
+    if (navigator.userAgent.indexOf("Linux")!=-1) os="linux";
+    var but = document.querySelectorAll('[href="download.php?os='+os+'"]')[0];
+    but.classList.add('current');
+</script>
 </html>
