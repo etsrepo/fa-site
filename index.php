@@ -308,7 +308,7 @@
             <span style="position:absolute;">&reg;</span>
             <div class="item-description">
                 <h3>Open Source. Forever.</h3>
-                Love Open Source? So do we! We will never chanrge you for the software. Today, Tomorrow and Forever.
+                Love Open Source? So do we! We will never charge you for the software. Today, Tomorrow and Forever.
             </div>
         </div>
         <div class="item">
